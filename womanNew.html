@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        box-sizing: border-box; 
+    }
+    html,body{
+        overflow-x: hidden;
+        height: 100%;
+    }
+    body{
+        font-size: small;
+        margin: 0;
+        padding: 0; 
+        position: relative;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #sidebarMenu{
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 300px;
+        background-color: white;
+        margin-top: 116px;
+        transform: translateX(-300px);
+        transition: transform 250ms ease-in-out;
+    }
+    #operSidebarMenu:checked ~ #sidebarMenu{
+        transform: translateX(0px);
+    }
+    .menu{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .menu li{
+        color: black;
+    }
+    .menu li a{
+        color: gray;
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+    }
+    .sidebarIconToggle{
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        z-index: 20;
+        top: 22px;
+        left: 15px;
+        cursor: pointer;
+        background-color: black;
+    }
+    .spinner{
+        height: 4px;
+        background: #fff;
+        transition: all 0.3s;
+    }
+    .spinner.middle,
+    .spinner.bottom{
+        margin-top: 3px;
+    }
+    
+    /* //////////////////////////////////////////////// */
+    #navbar{
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    #navbar>div:nth-child(2){
+        display: flex;
+        justify-content: space-between;
+        width: 130%;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+    #navbar>div:nth-child(2) a{
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+    #navbar>div>input{
+        border: 0;
+        text-decoration: underline;
+        padding: 0; 
+        height: 20px;
+        background: none;
+        
+    }  
+    #navbar>div>img{
+        width: 22%;
+        margin-left: 70px;
+    }
+    </style>
+</head>
+<body>
+   <div id="container">
+        <div id="navbar">
+            <div>
+                <img src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt="">
+            </div>
+            <div>
+                <input type="text" placeholder="SEARCH">
+                <a href="login.html">LOG IN</a>
+                <a href="">HELP</a>
+                <a href="">CART</a>
+            </div>
+        </div>
+        <input type="checkbox" id="operSidebarMenu">
+        <label for="operSidebarMenu" class="sidebarIconToggle">
+            <div class="spinner top"></div>
+            <div class="spinner middle"></div>
+            <div class="spinner bottom"></div>
+        </label>
+        <div id="sidebarMenu">
+            <ul class="menu">
+                <li><a href="">NEW</a></li>
+                <li><a href="">PARTY</a></li>
+                <li><a href="">BEST SELLERS</a></li>
+                <li><a href="">BASICS</a></li>
+                <li><a href="">COATS|PUFFER|JACKETS</a></li>
+                <li><a href="">DRESSES|JUMPSUITS</a></li>
+                <li><a href="">SHIRTS</a></li>
+                <li><a href="">BLAZERS</a></li>
+                <li><a href="">TROUSERS</a></li>
+                <li><a href="">TOPS</a></li>
+            </ul>
+        </div>
+   </div>
+</body>
+<script>
+    const url="https://636d322fab4814f2b27ba56f.mockapi.io/products";
+
+    function fetchData(url){
+        fetch(url)
+        .then((res)=>res.json())
+        .then((data)=>renderProducts(data))
+        .catch((err)=>alert(err))
+    }
+    fetchData(url)
+
+    function renderProducts(data){
+       data.forEach((elem)=>{
+        // document.querySelector("#container").innerHTML=""
+        let div=document.createElement("div")
+
+        let title=document.createElement("h2")
+        title.innerText=elem.title
+
+        let avatar=document.createElement("img")
+        avatar.src=elem.avatar
+
+        let des=document.createElement("p")
+        des.innerText=elem.description
+
+        let price=document.createElement("p")
+        price.innerText=elem.price
+
+        div.append(title,avatar,des,price)
+        document.querySelector("#container").append(div)
+       })
+    }
+</script>
+</html>
