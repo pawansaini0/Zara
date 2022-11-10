@@ -19,6 +19,8 @@
         margin: 0;
         padding: 0; 
         position: relative;
+        margin: 0;
+        padding: 0; 
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     #sidebarMenu{
@@ -76,6 +78,16 @@
         position: sticky;
         top: 0;
         z-index: 10;
+    margin-top: 3px;
+    }
+
+    /* //////////////////////////////////////////////// */
+    #navbar{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     }
     #navbar>div:nth-child(2){
         display: flex;
@@ -105,6 +117,16 @@
     #image{     
     position: absolute;
     top: 0;
+    border: 0;
+    text-decoration: underline;
+    padding: 0; 
+    height: 20px;
+    background: none;
+
+    }  
+    #navbar>div>img{
+    width: 22%;
+    margin-left: 70px;
     }
     #images>img{
         width: 100%;
@@ -141,6 +163,7 @@
         <div >
             <input type="text" placeholder="SEARCH">
             <a href="login.html">LOG IN</a>
+            <a href="">LOG IN</a>
             <a href="">HELP</a>
             <a href="">CART</a>
         </div>
@@ -165,7 +188,6 @@
             <li><a href="">TOPS</a></li>
         </ul>
     </div>
-    <!-- ////////////////////////////////////////////////// -->
     <div id="images">
         <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-new/subhome-xmedia-45//w/1920/IMAGE-landscape-default-fill-72e23389-afdf-460f-95e6-0b2eb0aab4d3-default_0.jpg?ts=1667838049147" alt="">
         <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-best-sellers/subhome-xmedia-38//w/1920/IMAGE-landscape-fill-c68605f6-1f94-4830-8f4a-0f3bf22017e2-default_0.jpg?ts=1663579002306" alt="">
@@ -181,6 +203,7 @@
     </div>
     <div id="bottom-bar">
         <a href="womanNew.html">NEW</a>
+        <a href="">NEW</a>
         <a href="">BEST SELLINGS</a>
         <a href="">PARTY</a>
         <a href="">SHOES</a>
