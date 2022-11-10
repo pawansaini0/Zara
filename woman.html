@@ -15,6 +15,10 @@
         height: 100%;
     }
     body{
+        font-size: small;
+        margin: 0;
+        padding: 0; 
+        position: relative;
         margin: 0;
         padding: 0; 
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,6 +68,16 @@
     }
     .spinner.middle,
     .spinner.bottom{
+        margin-top: 3px;
+    }
+    
+    /* //////////////////////////////////////////////// */
+    #navbar{
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     margin-top: 3px;
     }
 
@@ -88,6 +102,21 @@
         margin-right: 20px;
     }
     #navbar>div>input{
+        border: 0;
+        text-decoration: underline;
+        padding: 0; 
+        height: 20px;
+        background: none;
+        
+    }  
+    #navbar>div>img{
+        width: 22%;
+        margin-left: 70px;
+    }
+    /* ///////////////////////////////////////////// */
+    #image{     
+    position: absolute;
+    top: 0;
     border: 0;
     text-decoration: underline;
     padding: 0; 
@@ -133,6 +162,7 @@
         </div>
         <div >
             <input type="text" placeholder="SEARCH">
+            <a href="login.html">LOG IN</a>
             <a href="">LOG IN</a>
             <a href="">HELP</a>
             <a href="">CART</a>
@@ -172,6 +202,7 @@
         <a href="woman.html"></a>
     </div>
     <div id="bottom-bar">
+        <a href="womanNew.html">NEW</a>
         <a href="">NEW</a>
         <a href="">BEST SELLINGS</a>
         <a href="">PARTY</a>

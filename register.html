@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZARA india|Men</title>
+    <title>Document</title>
 </head>
 <style>
-    *{
+        *{
         box-sizing: border-box; 
     }
     html,body{
@@ -20,7 +20,6 @@
         padding: 0; 
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     #sidebarMenu{
         height: 100%;
         position: fixed;
@@ -48,7 +47,6 @@
         display: block;
         padding: 5px;
         text-decoration: none;
-
     }
     .sidebarIconToggle{
         width: 22px;
@@ -70,8 +68,10 @@
     margin-top: 3px;
     }
 
-    /* //////////////////////////////////////////////// */
-    #navbar{
+
+
+
+        #navbar{
     display: flex;
     justify-content: space-between;
     position: sticky;
@@ -102,36 +102,28 @@
     width: 22%;
     margin-left: 70px;
     }
-    #images>img{
-        width: 100%;
+    form{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 10px;
+        margin-top: 40px;
     }
-    #bottom-bar{
-        display: flex;
-        justify-content: space-evenly;
-        position: sticky;
-        bottom: 50px;
-        width: 50%;
+    form>input{
+        display: block;
         margin: auto;
+        width: 30%;
+        background: none;
+        border: 0;
+        text-decoration:underline;
+        padding: 5px;
+
     }
-    #bottom-bar>a{
-        color: black;
-        text-decoration: none;
-    }
-    #woman{
-        position: fixed;
-        top: 300px;
-    }
-    #woman>a{
+    #register{
+        background-color: black;
         color: white;
-        text-decoration: none;
-    }
-    #kids{
-        position: fixed;
-        top: 300px;
-        right: 16px;
-    }
-    #kids>a{
-        color: white;
+        padding:10px;
+        width: 30%;
+
         text-decoration: none;
     }
 </style>
@@ -143,7 +135,6 @@
         <div >
             <input type="text" placeholder="SEARCH">
             <a href="login.html">LOG IN</a>
-            <a href="">LOG IN</a>
             <a href="">HELP</a>
             <a href="">CART</a>
         </div>
@@ -168,24 +159,26 @@
             <li><a href="">TOPS</a></li>
         </ul>
     </div>
-    <div id="images">
-        <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-man-party/subhome-xmedia-43//w/1920/IMAGE-landscape-fill-b44c82ba-5617-4b1a-b8d3-3a3845552105-default_0.jpg?ts=1666959399763" alt="">
-        <img src="https://img.freepik.com/free-photo/brutal-man-model_1303-9211.jpg?w=996&t=st=1667995928~exp=1667996528~hmac=79386ed8f095708eee587b90f338c0c152c187f515f4703c81a1660c36f29656" alt="">
-        <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-man-new/subhome-xmedia-45//w/1920/IMAGE-landscape-fill-d571aa9f-97a1-483b-86dc-d18a9506c9fa-default_0.jpg?ts=1668010456418" alt="">
-        <img src="https://img.freepik.com/free-photo/man-dressed-casual-style-walks-outside_8353-507.jpg?w=996&t=st=1667996513~exp=1667997113~hmac=87e77fd1368e1bf58a0fa92f472e1aec35a687b4e162f81cec15d1c393690f95" alt="">
-        <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-newsletter/subhome-xmedia-03//w/1920/IMAGE-landscape-fill-6f5f24a2-7463-4ad2-91e9-0f2a99f75e89-default_0.jpg?ts=1643121593479" alt="">
-    </div>
-    <div id="woman">
-        <a href="woman.html"> < WOMAN</a>
-    </div>
-    <div id="kids">
-        <a href="kids.html">KIDS ></a>
-    </div>
-    <div id="bottom-bar">
-        <a href="">NEW</a>
-        <a href="">BEST SELLINGS</a>
-        <a href="">PARTY</a>
-        <a href="">SHOES</a>
-    </div>
+    <form>
+        <input type="text" name="" id="name" placeholder="NAME">
+        <input type="email" id="email" placeholder="E-MAIL">
+        <input type="password" id="password" placeholder="PASSWORD">
+        <input type="submit" value="CREATE  ACCOUNT" name="" id="register" placeholder="CREATE ACCOUNT">
+    </form>
 </body>
-</html
+<script>
+    
+    let form=document.querySelector("form")
+    form.addEventListener("submit",function(event){
+        event.preventDefault()
+        let data=JSON.parse(localStorage.getItem("accountData"))||[];
+        let obj={
+            name:form.name.value,
+            email:form.email.value,
+            password:form.password.value
+        }
+        data.push(obj)
+        localStorage.setItem("accountData",JSON.stringify(data))
+    })
+</script>
+</html>
