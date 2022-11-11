@@ -19,10 +19,9 @@
         margin: 0;
         padding: 0; 
         position: relative;
-        margin: 0;
-        padding: 0; 
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+    /* /////////////////////SIDE BAR///////////////////////////// */
     #sidebarMenu{
         height: 100%;
         position: fixed;
@@ -71,17 +70,14 @@
         margin-top: 3px;
     }
     
-    /* //////////////////////////////////////////////// */
+    /* ///////////////////////NAV BAR///////////////////////// */
     #navbar{
         display: flex;
         justify-content: space-between;
         position: sticky;
         top: 0;
         z-index: 10;
-    margin-top: 3px;
     }
-
-    /* //////////////////////////////////////////////// */
     #navbar{
     display: flex;
     justify-content: space-between;
@@ -134,10 +130,10 @@
     #bottom-bar{
         display: flex;
         justify-content: space-evenly;
-        position: sticky;
+        position: fixed;
         bottom: 50px;
         width: 50%;
-        margin: auto;
+        margin-left: 310px;
     }
     #bottom-bar>a{
         color: black;
@@ -161,11 +157,10 @@
             <img src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt="">
         </div>
         <div >
-            <input type="text" placeholder="SEARCH">
-            <a href="login.html">LOG IN</a>
-            <a href="">LOG IN</a>
+            <input type="text" id="search" placeholder="SEARCH">
+            <a href="login.html" id="logInTop">LOG IN</a>
             <a href="">HELP</a>
-            <a href="">CART</a>
+            <a href="cart.html">CART</a>
         </div>
     </div>
     <input type="checkbox" id="operSidebarMenu">
@@ -176,7 +171,7 @@
     </label>
     <div id="sidebarMenu">
         <ul class="menu">
-            <li><a href="">NEW</a></li>
+            <li><a href="womanNew.html">NEW</a></li>
             <li><a href="">PARTY</a></li>
             <li><a href="">BEST SELLERS</a></li>
             <li><a href="">BASICS</a></li>
@@ -188,6 +183,7 @@
             <li><a href="">TOPS</a></li>
         </ul>
     </div>
+    <!-- ////////////////////////////////////////////////// -->
     <div id="images">
         <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-new/subhome-xmedia-45//w/1920/IMAGE-landscape-default-fill-72e23389-afdf-460f-95e6-0b2eb0aab4d3-default_0.jpg?ts=1667838049147" alt="">
         <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-best-sellers/subhome-xmedia-38//w/1920/IMAGE-landscape-fill-c68605f6-1f94-4830-8f4a-0f3bf22017e2-default_0.jpg?ts=1663579002306" alt="">
@@ -203,10 +199,15 @@
     </div>
     <div id="bottom-bar">
         <a href="womanNew.html">NEW</a>
-        <a href="">NEW</a>
         <a href="">BEST SELLINGS</a>
         <a href="">PARTY</a>
         <a href="">SHOES</a>
     </div>
 </body>
+<script>
+       let allData=JSON.parse(localStorage.getItem("accountData"))
+    allData.forEach(element => {
+        document.querySelector("#logInTop").innerText=element.name
+    });
+</script>
 </html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart-ZARA India</title>
+</head>
+<style>
+        *{
+        box-sizing: border-box; 
+    }
+    html,body{
+        overflow-x: hidden;
+        height: 100%;
+    }
+    body{
+        font-size: small;
+        margin: 0;
+        padding: 0; 
+        position: relative;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+     #navbar{
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    #navbar>div:nth-child(2){
+        display: flex;
+        justify-content: space-evenly;
+        width: 130%;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+    #navbar>div:nth-child(2) a{
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+    #navbar>div>input{
+        border: 0;
+        text-decoration: underline;
+        padding: 0; 
+        height: 20px;
+        background: none;
+        
+    }  
+    #navbar>div>img{
+        width: 22%;
+        margin-left: 70px;
+    }
+    #zaraLogo{
+        width: 22%;
+        margin-left: 70px;
+    }
+    /* /////////////////////////////////////////////// */
+    #cartProducts{
+    display: grid;
+    grid-template-columns: 300px;
+    /* position:absolute; */
+    /* top: 130px; */
+    gap: 20px;
+    row-gap: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    }
+    #cartProducts>tr>img{
+        width: 100%;
+    }
+    #cartProducts>tr>td>button{
+        background-color: black;
+        color: white;
+        border: 0;
+        padding: 5px 20px;
+        font-size: small;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <div id="navbar">
+        <div>
+            <a href="woman.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
+        </div>
+        <div >
+            <a href="login.html" id="logInTop">LOG IN</a>
+            <a href="">HELP</a>
+        </div>
+    </div>
+    <div id="topBar">
+        <p><b>CART</b></p>
+        <p>FAVOURITES</p>
+    </div>
+    <div id="cartProducts">
+        <!-- append the added items here -->
+        <table>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+       let allData=JSON.parse(localStorage.getItem("productData"))
+
+       renderProducts(allData)
+       function renderProducts(data){
+       data.forEach((elem)=>{
+        let tr=document.createElement("tr")
+
+        let td1=document.createElement("td")
+
+        let title=document.createElement("h2")
+        title.innerText=elem.title
+
+        let avatar=document.createElement("img")
+        avatar.src=elem.avatar
+
+        let des=document.createElement("p")
+        des.innerText=elem.description
+
+        let price=document.createElement("p")
+        price.innerText=elem.price
+
+        let td2=document.createElement("td")
+
+        let add=document.createElement("button")
+        add.innerText="+"
+
+        let span=document.createElement("span")
+        span.innerText="1"
+
+        let divi=document.createElement("button")
+        divi.innerText="-"
+
+        tr.append(td1,td2)
+        td1.append(avatar,title,des,price)
+        td2.append(add,span,divi)
+        div.append(avatar,title,des,price)
+        document.querySelector("#cartProducts").append(tr)
+      
+       })
+    }
+
+
+</script>
+</html>

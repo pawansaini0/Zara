@@ -23,6 +23,7 @@
     #sidebarMenu{
         height: 100%;
         position: fixed;
+        z-index: 10;
         left: 0;
         top: 0;
         width: 300px;
@@ -72,7 +73,7 @@
     #navbar{
         display: flex;
         justify-content: space-between;
-        position: sticky;
+        position: fixed;
         top: 0;
         z-index: 10;
     }
@@ -96,9 +97,32 @@
         background: none;
         
     }  
-    #navbar>div>img{
-        width: 22%;
-        margin-left: 70px;
+    #zaraLogo{
+    width: 22%;
+    margin-left: 70px;
+    }
+    /* ////////////////////////////////////// */
+    #products{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        position:absolute;
+        top: 130px;
+        gap: 20px;
+        row-gap: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 40px;
+    }
+    #products>div>img{
+        width: 100%;
+    }
+    #products>div>button{
+        background-color: black;
+        color: white;
+        border: 0;
+        padding: 5px 20px;
+        font-size: small;
+        font-weight: bold;
     }
     </style>
 </head>
@@ -106,13 +130,13 @@
    <div id="container">
         <div id="navbar">
             <div>
-                <img src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt="">
+                <a href="woman.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
             </div>
             <div>
-                <input type="text" placeholder="SEARCH">
-                <a href="login.html">LOG IN</a>
+                <input type="text" id="search" placeholder="SEARCH">
+                <a href="login.html" id="logInTop">LOG IN</a>
                 <a href="">HELP</a>
-                <a href="">CART</a>
+                <a href="cart.html">CART</a>
             </div>
         </div>
         <input type="checkbox" id="operSidebarMenu">
@@ -136,21 +160,26 @@
             </ul>
         </div>
    </div>
+   <div id="products">
+    <!-- append all products here -->
+   </div>
 </body>
 <script>
+    let bag=[]
     const url="https://636d322fab4814f2b27ba56f.mockapi.io/products";
-
-    function fetchData(url){
-        fetch(url)
-        .then((res)=>res.json())
-        .then((data)=>renderProducts(data))
-        .catch((err)=>alert(err))
+    
+    async function fetchData(url){
+       let res = await fetch(url)
+       let out=await res.json()
+       bag=out
+       renderProducts(bag)
+       console.log(bag)
     }
     fetchData(url)
 
     function renderProducts(data){
+        document.querySelector("#products").innerHTML=""
        data.forEach((elem)=>{
-        // document.querySelector("#container").innerHTML=""
         let div=document.createElement("div")
 
         let title=document.createElement("h2")
@@ -164,10 +193,37 @@
 
         let price=document.createElement("p")
         price.innerText=elem.price
+        
+        let btn=document.createElement("button")
+        btn.innerText="ADD TO BAG"
+        btn.addEventListener("click",function(){
+            let carry=JSON.parse(localStorage.getItem("productData"))||[]
+            carry.push(elem)
+            alert("Item added to bag")
+            localStorage.setItem("productData",JSON.stringify(carry))
+            console.log(carry)
+        })
 
-        div.append(title,avatar,des,price)
-        document.querySelector("#container").append(div)
+        div.append(avatar,title,des,price,btn)
+        document.querySelector("#products").append(div)
+      
        })
     }
+
+            let allData=JSON.parse(localStorage.getItem("accountData"))
+        allData.forEach(element => {
+            document.querySelector("#logInTop").innerText=element.name
+        });
+        //////////////////////////////////////////////////////
+        document.querySelector("#search").addEventListener("input",function(){
+
+            let q=document.querySelector("#search").value;
+            console.log(q)
+            let newData=bag.filter(function(elem){
+                return elem.title.toUpperCase().includes(q.toUpperCase())
+            })
+            renderProducts(newData)
+        })
+          
 </script>
 </html>

@@ -97,6 +97,9 @@
         height: 20px;
         background: none;
     }  
+    #zaraLogo{
+    width: 22%;
+    margin-left: 70px;
     #navbar>div>img{
         width: 22%;
         margin-left: 70px;
@@ -135,6 +138,11 @@
 <body>
     <div id="navbar">
         <div>
+            <a href="woman.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
+        </div>
+        <div >
+            <input type="text" placeholder="SEARCH">
+            <a href="" id="logInTop">LOG IN</a>
             <img src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt="">
         </div>
         <div >
@@ -189,6 +197,7 @@
         let output=allData.find(function(elem){
             if(elem.email===document.querySelector("#email").value&&elem.password===document.querySelector("#password").value){
                 alert("Login Successful")
+                document.querySelector("#logInTop").innerText=elem.name
                 return true;
             }
         })
