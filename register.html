@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        *{
+        box-sizing: border-box; 
+    }
+    html,body{
+        overflow-x: hidden;
+        height: 100%;
+    }
+    body{
+        font-size: small;
+        margin: 0;
+        padding: 0; 
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #sidebarMenu{
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 300px;
+        background-color: white;
+        margin-top: 116px;
+        transform: translateX(-300px);
+        transition: transform 250ms ease-in-out;
+    }
+    #operSidebarMenu:checked ~ #sidebarMenu{
+        transform: translateX(0px);
+    }
+    .menu{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .menu li{
+        color: black;
+    }
+    .menu li a{
+        color: gray;
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+    }
+    .sidebarIconToggle{
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        z-index: 20;
+        top: 22px;
+        left: 15px;
+        cursor: pointer;
+        background-color: black;
+    }
+    .spinner{
+        height: 4px;
+        background: #fff;
+        transition: all 0.3s;
+    }
+    .spinner.middle,
+    .spinner.bottom{
+    margin-top: 3px;
+    }
+
+
+
+
+        #navbar{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    }
+    #navbar>div:nth-child(2){
+        display: flex;
+        justify-content: space-between;
+        width: 130%;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+    #navbar>div:nth-child(2) a{
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+    #navbar>div>input{
+    border: 0;
+    text-decoration: underline;
+    padding: 0; 
+    height: 20px;
+    background: none;
+
+    }  
+    #zaraLogo{
+    width: 22%;
+    margin-left: 70px;
+    }
+    form{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 10px;
+        margin-top: 40px;
+    }
+    form>input{
+        display: block;
+        margin: auto;
+        width: 30%;
+        background: none;
+        border: 0;
+        text-decoration:underline;
+        padding: 5px;
+
+    }
+    #register{
+        background-color: black;
+        color: white;
+        padding:10px;
+        width: 30%;
+
+        text-decoration: none;
+    }
+</style>
+<body>
+    <div id="navbar">
+        <div>
+            <a href="woman.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
+        </div>
+        <div >
+            <input type="text" placeholder="SEARCH">
+            <a href="login.html">LOG IN</a>
+            <a href="">HELP</a>
+            <a href="">CART</a>
+        </div>
+    </div>
+    <input type="checkbox" id="operSidebarMenu">
+    <label for="operSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner top"></div>
+        <div class="spinner middle"></div>
+        <div class="spinner bottom"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="menu">
+            <li><a href="">NEW</a></li>
+            <li><a href="">PARTY</a></li>
+            <li><a href="">BEST SELLERS</a></li>
+            <li><a href="">BASICS</a></li>
+            <li><a href="">COATS|PUFFER|JACKETS</a></li>
+            <li><a href="">DRESSES|JUMPSUITS</a></li>
+            <li><a href="">SHIRTS</a></li>
+            <li><a href="">BLAZERS</a></li>
+            <li><a href="">TROUSERS</a></li>
+            <li><a href="">TOPS</a></li>
+        </ul>
+    </div>
+    <form>
+        <input type="text" name="" id="name" placeholder="NAME">
+        <input type="email" id="email" placeholder="E-MAIL">
+        <input type="password" id="password" placeholder="PASSWORD">
+        <input type="submit" value="CREATE  ACCOUNT" name="" id="register" placeholder="CREATE ACCOUNT">
+    </form>
+</body>
+<script>
+    
+    let form=document.querySelector("form")
+    form.addEventListener("submit",function(event){
+        event.preventDefault()
+        let data=JSON.parse(localStorage.getItem("accountData"))||[];
+        let obj={
+            name:form.name.value,
+            email:form.email.value,
+            password:form.password.value
+        }
+        data.push(obj)
+        localStorage.setItem("accountData",JSON.stringify(data))
+    })
+</script>
+</html>
