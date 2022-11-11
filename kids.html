@@ -98,6 +98,7 @@
 
         }  
         #zaraLogo{
+        #navbar>div>img{
         width: 22%;
         margin-left: 70px;
         }
@@ -136,6 +137,15 @@
             <a href="login.html" id="logInTop">LOG IN</a>
             <a href="">HELP</a>
             <a href="cart.html">CART</a>
+
+            <img src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt="">
+        </div>
+        <div >
+            <input type="text" placeholder="SEARCH">
+            <a href="login.html">LOG IN</a>
+            <a href="">LOG IN</a>
+            <a href="">HELP</a>
+            <a href="">CART</a>
         </div>
     </div>
     <input type="checkbox" id="operSidebarMenu">
@@ -147,6 +157,7 @@
     <div id="sidebarMenu">
         <ul class="menu">
             <li><a href="womanNew.html">NEW</a></li>
+            <li><a href="">NEW</a></li>
             <li><a href="">PARTY</a></li>
             <li><a href="">BEST SELLERS</a></li>
             <li><a href="">BASICS</a></li>
@@ -175,10 +186,12 @@
         <a href="">MINI</a>
     </div>
 </body>
+
 <script>
     let allData=JSON.parse(localStorage.getItem("accountData"))
 allData.forEach(element => {
     document.querySelector("#logInTop").innerText=element.name
 });
 </script>
+
 </html>

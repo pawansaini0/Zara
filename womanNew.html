@@ -174,7 +174,6 @@
        bag=out
        renderProducts(bag)
        console.log(bag)
-
     }
     fetchData(url)
 
@@ -194,7 +193,7 @@
 
         let price=document.createElement("p")
         price.innerText=elem.price
-
+        
         let btn=document.createElement("button")
         btn.innerText="ADD TO BAG"
         btn.addEventListener("click",function(){
@@ -226,6 +225,5 @@
             renderProducts(newData)
         })
           
-        
 </script>
 </html>

@@ -78,6 +78,13 @@
         top: 0;
         z-index: 10;
     }
+    #navbar{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    }
     #navbar>div:nth-child(2){
         display: flex;
         justify-content: space-between;
@@ -103,9 +110,19 @@
         margin-left: 70px;
     }
     /* ///////////////////////////////////////////// */
-    #images{     
-    /* position: absolute;
-    top: 0; */
+    #image{     
+    position: absolute;
+    top: 0;
+    border: 0;
+    text-decoration: underline;
+    padding: 0; 
+    height: 20px;
+    background: none;
+
+    }  
+    #navbar>div>img{
+    width: 22%;
+    margin-left: 70px;
     }
     #images>img{
         width: 100%;
@@ -192,7 +209,5 @@
     allData.forEach(element => {
         document.querySelector("#logInTop").innerText=element.name
     });
-
-
 </script>
 </html>
