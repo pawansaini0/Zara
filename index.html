@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZARA india|New Collection Online</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box; 
+    }
+    html,body{
+        overflow-x: hidden;
+        height: 100%;
+    }
+    body{
+        font-size: small;
+        margin: 0;
+        padding: 0; 
+        position: relative;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    /* /////////////////////SIDE BAR///////////////////////////// */
+    #sidebarMenu{
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 300px;
+        background-color: white;
+        margin-top: 116px;
+        transform: translateX(-300px);
+        transition: transform 250ms ease-in-out;
+    }
+    #operSidebarMenu:checked ~ #sidebarMenu{
+        transform: translateX(0px);
+    }
+    .menu{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .menu li{
+        color: black;
+    }
+    .menu li a{
+        color: gray;
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+    }
+    .sidebarIconToggle{
+        width: 22px;
+        height: 22px;
+        position: fixed;
+        z-index: 20;
+        top: 50px;
+        left: 15px;
+        cursor: pointer;
+        background-color: black;
+    }
+    .spinner{
+        height: 4px;
+        background: #fff;
+        transition: all 0.3s;
+    }
+    .spinner.middle,
+    .spinner.bottom{
+        margin-top: 3px;
+    }
+    
+    /* ///////////////////////NAV BAR///////////////////////// */
+    #navbar{
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    #navbar>div:nth-child(2){
+        display: flex;
+        justify-content: space-between;
+        width: 130%;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+    #navbar>div:nth-child(2) a{
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+    #navbar>div>input{
+        border: 0;
+        text-decoration: underline;
+        padding: 0; 
+        height: 20px;
+        background: none;
+        
+    }  
+    #navbar>div>img{
+        width: 22%;
+        margin-left: 70px;
+    }
+    /* ///////////////////////////////////////////// */
+    #images{     
+    /* position: absolute;
+    top: 0; */
+    }
+    #images>img{
+        width: 100%;
+    }
+    #bottom-bar{
+        display: flex;
+        justify-content: space-evenly;
+        position: fixed;
+        bottom: 50px;
+        width: 50%;
+        margin-left: 310px;
+    }
+    #bottom-bar>a{
+        color: black;
+        text-decoration: none;
+    }
+
+    #man{
+        position: fixed;
+        top: 300px;
+        right: 16px;
+    }
+    #man>a{
+        color: black;
+        text-decoration: none;
+    }
+</style>
+<body>
+    
+    <div id="navbar">
+        <div>
+            <img src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt="">
+        </div>
+        <div >
+            <input type="text" id="search" placeholder="SEARCH">
+            <a href="login.html" id="logInTop">LOG IN</a>
+            <a href="">HELP</a>
+            <a href="cart.html">CART</a>
+        </div>
+    </div>
+    <input type="checkbox" id="operSidebarMenu">
+    <label for="operSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner top"></div>
+        <div class="spinner middle"></div>
+        <div class="spinner bottom"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="menu">
+            <li><a href="womanNew.html">NEW</a></li>
+            <li><a href="">PARTY</a></li>
+            <li><a href="">BEST SELLERS</a></li>
+            <li><a href="">BASICS</a></li>
+            <li><a href="">COATS|PUFFER|JACKETS</a></li>
+            <li><a href="">DRESSES|JUMPSUITS</a></li>
+            <li><a href="">SHIRTS</a></li>
+            <li><a href="">BLAZERS</a></li>
+            <li><a href="">TROUSERS</a></li>
+            <li><a href="">TOPS</a></li>
+        </ul>
+    </div>
+    <!-- ////////////////////////////////////////////////// -->
+    <div id="images">
+        <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-new/subhome-xmedia-45-2//w/1920/IMAGE-landscape-default-fill-8a4feb05-9060-4eb7-91fb-767353304320-default_0.jpg?ts=1668168158418" alt="">
+        <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-best-sellers/subhome-xmedia-38//w/1920/IMAGE-landscape-fill-c68605f6-1f94-4830-8f4a-0f3bf22017e2-default_0.jpg?ts=1663579002306" alt="">
+        <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-lingerie/subhome-xmedia-45//w/1920/IMAGE-landscape-fill-5f40faa0-ea03-439e-87db-131f6d89641d-default_0.jpg?ts=1668166905699" alt="">
+        <img src="https://static.zara.net/photos///contents/mkt/spots/aw22-north-woman-shoes-bags/subhome-xmedia-45//w/1920/IMAGE-landscape-fill-c4b22866-4811-4b7e-8882-d7ed0270ca1f-default_0.jpg?ts=1667808315533" alt="">
+        <img src="https://static.zara.net/photos///contents/mkt/spots/ss22-newsletter/subhome-xmedia-03//w/1920/IMAGE-landscape-fill-6f5f24a2-7463-4ad2-91e9-0f2a99f75e89-default_0.jpg?ts=1643121593479" alt="">
+    </div>
+    <div id="man">
+        <a href="man.html">MAN ></a>
+    </div>
+    <div id="woman">
+        <a href="woman.html"></a>
+    </div>
+    <div id="bottom-bar">
+        <a href="womanNew.html">NEW</a>
+        <a href="">BEST SELLINGS</a>
+        <a href="">PARTY</a>
+        <a href="">SHOES</a>
+    </div>
+</body>
+<script>
+       let allData=JSON.parse(localStorage.getItem("accountData"))||[]
+    allData.forEach(element => {
+        document.querySelector("#logInTop").innerText=element.name
+    });
+
+
+</script>
+</html>

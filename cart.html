@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart-ZARA India</title>
+</head>
+<style>
+        *{
+        box-sizing: border-box; 
+    }
+    html,body{
+        overflow-x: hidden;
+        height: 100%;
+    }
+    body{
+        font-size: small;
+        margin: 0;
+        padding: 0; 
+        position: relative;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+     #navbar{
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    #navbar>div:nth-child(2){
+        display: flex;
+        justify-content: space-evenly;
+        width: 130%;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+    #navbar>div:nth-child(2) a{
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+    #navbar>div>input{
+        border: 0;
+        text-decoration: underline;
+        padding: 0; 
+        height: 20px;
+        background: none;
+        
+    }  
+    #navbar>div>img{
+        width: 22%;
+        margin-left: 70px;
+    }
+    #zaraLogo{
+        width: 22%;
+        margin-left: 70px;
+    }
+    /* /////////////////////////////////////////////// */
+    #topBar{
+        display: flex;
+        width: 20%;
+        justify-content: space-around;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    #body>tr{
+    display: grid;
+    /* border: 1px solid  red; */
+    grid-template-columns: repeat(2,300px);
+    /* position:absolute; */
+    /* top: 130px; */
+    gap: 20px;
+    row-gap: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    }
+
+    #body>tr>td>img{
+        width: 100%;
+    }
+    #body>tr>td>button{
+        /* background-color: black; */
+        /* display:flex; */
+        color: black;
+        border: 0;
+        padding: 5px 20px;
+        font-size: small;
+        font-weight: bold;
+        margin-top: 200px;
+    }
+    #rem{
+        display: block;
+        margin-top: 50px;
+        text-align: center;
+    }
+    #bottomBar{
+        position: fixed;
+        bottom: 0;
+        right: 20px;
+        width: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: end;
+    }
+    #bottomBar>div>p{
+        text-align: end;
+        margin-right: 20px;
+        
+    }
+    #bottomBar>div>button{
+        background-color: black;
+        color:white;
+        padding: 10px 70px;
+        text-align: center;
+        margin-top: 15px;
+        margin-right: 30px;
+        
+    }
+</style>
+<body>
+    <div id="navbar">
+        <div>
+            <a href="index.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
+        </div>
+        <div >
+            <a href="login.html" id="logInTop">LOG IN</a>
+            <a href="">HELP</a>
+        </div>
+    </div>
+    <div id="topBar">
+        <p><b>CART</b></p>
+        <p>FAVOURITES</p>
+    </div>
+    <div id="cartProducts">
+        <!-- append the added items here -->
+        <table>
+            <tbody id="body">
+                
+            </tbody>
+        </table>
+    </div>
+    <div id="bottomBar">
+        <div>
+            <p><b>TOTAL ₹<span id="total">0</span></b></p>
+            <p>INCLUDING GST</p>
+            <!-- <p>*EXCL SHIPPING COST</p> -->
+        </div>
+        <div>
+            <button>CONTINUE</button>
+        </div>
+    </div>
+</body>
+<script>
+       let allData=JSON.parse(localStorage.getItem("productData"))
+
+          let alldata=JSON.parse(localStorage.getItem("accountData"))||[]
+          alldata.forEach(element => {
+          document.querySelector("#logInTop").innerText=element.name
+        })
+
+      function addProducts(){
+        let sumProduct=allData.reduce(function(acc,elem){
+            return acc+elem.price
+        },0)
+        document.querySelector("#total").innerText=sumProduct
+      }
+      addProducts()
+       renderProducts(allData)
+       function renderProducts(data){
+            document.querySelector("#body").innerHTML=""
+        data.forEach((elem,index)=>{
+            let tr=document.createElement("tr")
+
+            let td1=document.createElement("td")
+
+            let title=document.createElement("h2")
+            title.innerText=elem.title
+
+            let avatar=document.createElement("img")
+            avatar.src=elem.avatar
+
+            let des=document.createElement("p")
+            des.innerText=elem.description
+
+            let price=document.createElement("p")
+            price.innerText="₹"+ elem.price
+
+            let td2=document.createElement("td")
+
+            let add=document.createElement("button")
+            add.innerText="+"
+            add.addEventListener("click",function(){
+                span_tag.innerText= +(span_tag.innerText)+1
+
+                let sumProduct=data.reduce(function(acc,elem){
+                return acc+(elem.price* (Number(span_tag.innerText)))
+                },0)
+                console.log(sumProduct)
+                document.querySelector("#total").innerText=sumProduct
+            })
+
+            let span_tag=document.createElement("span")
+            span_tag.innerText="1"
+
+            let divi=document.createElement("button")
+            divi.innerText="-"
+            divi.addEventListener("click",function(){
+                span_tag.innerText= +(span_tag.innerText)-1
+
+                if(span_tag.innerText==="0"){
+                    data.splice(index,1)
+                    localStorage.setItem("productData",JSON.stringify(data));
+                    renderProducts(data)
+                    document.querySelector("#total").innerText=sumProduct
+                }
+                let sumProduct=data.reduce(function(acc,elem){
+                return acc-(elem.price* (Number(span_tag.innerText)))
+                },0)
+                console.log(sumProduct)
+                document.querySelector("#total").innerText=Math.abs(sumProduct)
+            })
+
+            let remove=document.createElement("button")
+            remove.innerText="DELETE"
+            remove.setAttribute("id","rem")
+            remove.addEventListener("click",function(){
+            data.splice(index,1)
+            localStorage.setItem("productData",JSON.stringify(data))
+            renderProducts(data)
+            addProducts()
+        })
+            tr.append(td1,td2)
+            td1.append(avatar,title,des,price)
+            td2.append(add,span_tag,divi,remove)
+            // div.append(avatar,title,des,price)
+            document.querySelector("#body").append(tr)
+      
+       })
+    }
+
+
+</script>
+</html>
