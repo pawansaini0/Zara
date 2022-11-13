@@ -123,6 +123,7 @@
         padding: 5px 20px;
         font-size: small;
         font-weight: bold;
+        cursor: pointer;
     }
     </style>
 </head>
@@ -130,7 +131,7 @@
    <div id="container">
         <div id="navbar">
             <div>
-                <a href="woman.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
+                <a href="index.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
             </div>
             <div>
                 <input type="text" id="search" placeholder="SEARCH">
@@ -172,8 +173,8 @@
        let res = await fetch(url)
        let out=await res.json()
        bag=out
-       renderProducts(bag)
-       console.log(bag)
+       renderProducts(out)
+    //    console.log(bag)
     }
     fetchData(url)
 
@@ -193,7 +194,7 @@
 
         let price=document.createElement("p")
         price.innerText=elem.price
-        
+
         let btn=document.createElement("button")
         btn.innerText="ADD TO BAG"
         btn.addEventListener("click",function(){
@@ -201,7 +202,6 @@
             carry.push(elem)
             alert("Item added to bag")
             localStorage.setItem("productData",JSON.stringify(carry))
-            console.log(carry)
         })
 
         div.append(avatar,title,des,price,btn)
@@ -210,7 +210,7 @@
        })
     }
 
-            let allData=JSON.parse(localStorage.getItem("accountData"))
+            let allData=JSON.parse(localStorage.getItem("accountData"))||[]
         allData.forEach(element => {
             document.querySelector("#logInTop").innerText=element.name
         });

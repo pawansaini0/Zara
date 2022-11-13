@@ -57,9 +57,17 @@
         margin-left: 70px;
     }
     /* /////////////////////////////////////////////// */
-    #cartProducts{
+    #topBar{
+        display: flex;
+        width: 20%;
+        justify-content: space-around;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    #body>tr{
     display: grid;
-    grid-template-columns: 300px;
+    /* border: 1px solid  red; */
+    grid-template-columns: repeat(2,300px);
     /* position:absolute; */
     /* top: 130px; */
     gap: 20px;
@@ -68,22 +76,51 @@
     margin-right: 20px;
     margin-bottom: 40px;
     }
-    #cartProducts>tr>img{
+    #body>tr>td>img{
         width: 100%;
     }
-    #cartProducts>tr>td>button{
-        background-color: black;
-        color: white;
+    #body>tr>td>button{
+        /* background-color: black; */
+        /* display:flex; */
+        color: black;
         border: 0;
         padding: 5px 20px;
         font-size: small;
         font-weight: bold;
+        margin-top: 200px;
+    }
+    #rem{
+        display: block;
+        margin-top: 50px;
+        text-align: center;
+    }
+    #bottomBar{
+        position: fixed;
+        bottom: 0;
+        right: 20px;
+        width: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: end;
+    }
+    #bottomBar>div>p{
+        text-align: end;
+        margin-right: 20px;
+        
+    }
+    #bottomBar>div>button{
+        background-color: black;
+        color:white;
+        padding: 10px 70px;
+        text-align: center;
+        margin-top: 15px;
+        margin-right: 30px;
     }
 </style>
 <body>
     <div id="navbar">
         <div>
-            <a href="woman.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
+            <a href="index.html" ><img id="zaraLogo" src="https://1000logos.net/wp-content/uploads/2022/08/Zara-log%D0%BE.png" alt=""></a>
         </div>
         <div >
             <a href="login.html" id="logInTop">LOG IN</a>
@@ -97,50 +134,106 @@
     <div id="cartProducts">
         <!-- append the added items here -->
         <table>
-            <tbody>
+            <tbody id="body">
                 
             </tbody>
         </table>
+    </div>
+    <div id="bottomBar">
+        <div>
+            <p><b>TOTAL ₹<span id="total">0</span></b></p>
+            <p>INCLUDING GST</p>
+            <!-- <p>*EXCL SHIPPING COST</p> -->
+        </div>
+        <div>
+            <button>CONTINUE</button>
+        </div>
     </div>
 </body>
 <script>
        let allData=JSON.parse(localStorage.getItem("productData"))
 
+          let alldata=JSON.parse(localStorage.getItem("accountData"))||[]
+          alldata.forEach(element => {
+          document.querySelector("#logInTop").innerText=element.name
+        })
+
+      function addProducts(){
+        let sumProduct=allData.reduce(function(acc,elem){
+            return acc+elem.price
+        },0)
+        document.querySelector("#total").innerText=sumProduct
+      }
+      addProducts()
        renderProducts(allData)
        function renderProducts(data){
-       data.forEach((elem)=>{
-        let tr=document.createElement("tr")
+            document.querySelector("#body").innerHTML=""
+        data.forEach((elem,index)=>{
+            let tr=document.createElement("tr")
 
-        let td1=document.createElement("td")
+            let td1=document.createElement("td")
 
-        let title=document.createElement("h2")
-        title.innerText=elem.title
+            let title=document.createElement("h2")
+            title.innerText=elem.title
 
-        let avatar=document.createElement("img")
-        avatar.src=elem.avatar
+            let avatar=document.createElement("img")
+            avatar.src=elem.avatar
 
-        let des=document.createElement("p")
-        des.innerText=elem.description
+            let des=document.createElement("p")
+            des.innerText=elem.description
 
-        let price=document.createElement("p")
-        price.innerText=elem.price
+            let price=document.createElement("p")
+            price.innerText="₹"+ elem.price
 
-        let td2=document.createElement("td")
+            let td2=document.createElement("td")
 
-        let add=document.createElement("button")
-        add.innerText="+"
+            let add=document.createElement("button")
+            add.innerText="+"
+            add.addEventListener("click",function(){
+                span_tag.innerText= +(span_tag.innerText)+1
 
-        let span=document.createElement("span")
-        span.innerText="1"
+                let sumProduct=data.reduce(function(acc,elem){
+                return acc+(elem.price* (Number(span_tag.innerText)))
+                },0)
+                console.log(sumProduct)
+                document.querySelector("#total").innerText=sumProduct
+            })
 
-        let divi=document.createElement("button")
-        divi.innerText="-"
+            let span_tag=document.createElement("span")
+            span_tag.innerText="1"
 
-        tr.append(td1,td2)
-        td1.append(avatar,title,des,price)
-        td2.append(add,span,divi)
-        div.append(avatar,title,des,price)
-        document.querySelector("#cartProducts").append(tr)
+            let divi=document.createElement("button")
+            divi.innerText="-"
+            divi.addEventListener("click",function(){
+                span_tag.innerText= +(span_tag.innerText)-1
+
+                if(span_tag.innerText==="0"){
+                    data.splice(index,1)
+                    localStorage.setItem("productData",JSON.stringify(data));
+                    renderProducts(data)
+                    document.querySelector("#total").innerText=sumProduct
+                }
+                let sumProduct=data.reduce(function(acc,elem){
+                return acc-(elem.price* (Number(span_tag.innerText)))
+                },0)
+                console.log(sumProduct)
+                document.querySelector("#total").innerText=Math.abs(sumProduct)
+            })
+
+            let remove=document.createElement("button")
+            remove.innerText="DELETE"
+            remove.setAttribute("id","rem")
+            remove.addEventListener("click",function(){
+            data.splice(index,1)
+            localStorage.setItem("productData",JSON.stringify(data))
+            renderProducts(data)
+            addProducts()
+        })
+            tr.append(td1,td2)
+            td1.append(avatar,title,des,price)
+            td2.append(add,span_tag,divi,remove)
+            // div.append(avatar,title,des,price)
+            document.querySelector("#body").append(tr)
       
        })
     }
