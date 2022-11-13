@@ -175,7 +175,6 @@
        bag=out
        renderProducts(out)
     //    console.log(bag)
-
     }
     fetchData(url)
 
@@ -203,7 +202,6 @@
             carry.push(elem)
             alert("Item added to bag")
             localStorage.setItem("productData",JSON.stringify(carry))
-            // console.log(carry)
         })
 
         div.append(avatar,title,des,price,btn)
@@ -227,6 +225,5 @@
             renderProducts(newData)
         })
           
-        
 </script>
 </html>
