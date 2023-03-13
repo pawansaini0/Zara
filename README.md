@@ -12,5 +12,25 @@
   <li>Local Storage</li>
   <li>Mock API to ensure fast and reliable data retrieval.</li>
 </ul>
+<h1>Pages</h1>
+<ol>
+<li>Landing Page (Women Page)</li>
+<li>Men Page</li>
+<li>Children Page</li>
+<li>Cart Page</li>
+<li>SignUp and Login</li>
+<li>Cart Page</li>
+<li>Product Description</li>
+<li>Payment and Checkout Page</li>
+</ol>
+<h1>Functionalities</h1>
+<ol>
+<li>Search Products</li>
+<li>Deleting/incrementing/decrementing from Cart</li>
+<li>Payment</li>
+<li>Add to Cart</li>
+<li>Side bar</li>
+<li>Login and Registration</li>
+</ol>
 <h1>Visit Us Today!</h1>
 <p>We invite you to explore our website and discover our wide selection of clothing options. Whether you're looking for a new outfit for a night out or a casual day at the office, we have something for everyone. Visit us today at https://helpful-begonia-adf8e6.netlify.app and start shopping!</p>
