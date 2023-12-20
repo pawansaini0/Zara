@@ -1,5 +1,5 @@
-<h1>Qura</h1>
-<p>Qura is a premium online clothing retailer that offers an extensive selection of fashionable and trendy clothing options for men and women and child. Our website boasts a sleek and intuitive interface, making it easy for shoppers to browse and discover their perfect outfit. We pride ourselves on providing a diverse collection of clothing options that showcase the latest fashion
+<h1>Zara</h1>
+<p>zara is a premium online clothing retailer that offers an extensive selection of fashionable and trendy clothing options for men and women and child. Our website boasts a sleek and intuitive interface, making it easy for shoppers to browse and discover their perfect outfit. We pride ourselves on providing a diverse collection of clothing options that showcase the latest fashion
  trends and styles, ensuring that our customers always look and feel their best.</p>
 <img width="949" alt="2023-05-29 (3)" src="https://github.com/pawansaini0/bewildered-moon-2417/assets/112754696/5fce3574-83b4-4f78-bdde-d0e4b84bae59">
 <h1>Technologies Used</h1>
